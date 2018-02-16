@@ -1,0 +1,12 @@
+{
+  "test":{
+    "PORT": 3000,
+    "MONGODB_URI": "mongodb://localhost:27017/GitaTest",
+    "JWT_SECRET": "hbcb78687bjkbjkbjabacoNZiHSDBVSSVDXDFZDFZDSt"
+  },
+  "development":{
+    "PORT": 3000,
+    "MONGODB_URI": "mongodb://localhost:27017/Gita",
+    "JWT_SECRET": "hbcb78687bjkbjkbjabacoNZiHSDBVSSVDXDFZDFZDSd"
+  }
+}
