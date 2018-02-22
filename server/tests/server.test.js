@@ -9,7 +9,7 @@ const {users, populateUser} = require('./seed/seed');
 
 
 
-//beforeEach(populateUser);
+beforeEach(populateUser);
 
 
 describe('POST /users', () => {
@@ -22,6 +22,7 @@ describe('POST /users', () => {
             .send({email,password})
             .expect(200)
             .expect((res) => {
+                expect(res.header['x-auth']).toBeTruthy();
                 expect(res.body._id).toBeTruthy();
                 expect(res.body.email).toBeTruthy();
             })

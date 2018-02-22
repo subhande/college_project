@@ -37,14 +37,14 @@ const users = [{
 
 }];
 
-const populateUser = async (done) =>{
+const populateUser = async () =>{
     try {
+        await User.remove({});
         let userOne = await new User(users[0]).save();
         let userTwo = await new User(users[1]).save();
         let userThree = await new User(users[2]).save();
-        done();
     } catch(e) {
-        done(e);
+        console.log(e);
     }
 };
 
