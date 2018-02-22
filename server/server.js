@@ -37,6 +37,35 @@ app.get('/users/me', authenticate, async (req, res) => {
 });
 
 
+app.post('/users/login', async (req, res) => {
+    try {
+
+        const body = _.pick(req.body,['email','password']);
+        const user = await User.findByCredentials(body.email,body.password);
+        //console.log(user);
+        const token = await user.generateAuthToken();
+        //console.log(token);
+        res.header('x-auth',token).send(user);
+
+    } catch(err){
+        res.status(400).send();
+    }
+});
+
+
+app.delete('/users/me/delete', authenticate,async (req, res) => {
+
+    try{
+        await req.user.removeToken(req.token);
+        res.status(200).send();
+    } catch(e) {
+        res.status(400).send();
+    }
+
+});
+
+
+
 
 app.listen(PORT, () => {
     console.log(`Started up at port ${PORT}`);
