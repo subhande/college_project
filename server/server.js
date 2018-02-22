@@ -53,7 +53,7 @@ app.post('/users/login', async (req, res) => {
 });
 
 
-app.delete('/users/me/delete', authenticate,async (req, res) => {
+app.delete('/users/me/token', authenticate,async (req, res) => {
 
     try{
         await req.user.removeToken(req.token);
