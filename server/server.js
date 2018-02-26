@@ -27,7 +27,6 @@ app.use('/',home);
 
 
 
-
 app.listen(PORT, () => {
     console.log(`Started up at port ${PORT}`);
 });
