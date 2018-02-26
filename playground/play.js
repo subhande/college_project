@@ -4,6 +4,7 @@ require('../server/config/config');
 const {mongoose} = require('../server/db/mongoose');
 const {User} = require('../server/models/user');
 const {Student} = require('../server/models/student');
+const {Faculty} = require('../server/models/faculty');
 
 //Test User
 
@@ -25,17 +26,34 @@ const {Student} = require('../server/models/student');
 
 //Test Student
 
-let sbody = {
-    regId: 1401287345,
-    rollNo: 141057,
-    courseName: 'B.tech',
-    branch: 'CSE',
-    semester: '8th'
+// let sbody = {
+//     regId: 1401287345,
+//     rollNo: 141057,
+//     courseName: 'B.tech',
+//     branch: 'CSE',
+//     semester: '8th'
+// };
+//
+// let student  = new Student(sbody);
+//
+// student.save().then(() => {
+//     console.log("Worked");
+// }).catch(e => console.log(e));
+
+
+//Test teacher
+
+
+let fbody = {
+    facultyId: 1401287347,
+    teaches: [
+        'CNS','DBMS'
+    ]
 };
 
-let student  = new Student(sbody);
+let faculty  = new Faculty(fbody);
 
-student.save().then(() => {
+faculty.save().then(() => {
     console.log("Worked");
 }).catch(e => console.log(e));
 
