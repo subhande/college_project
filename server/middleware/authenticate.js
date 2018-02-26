@@ -1,4 +1,4 @@
-const {User} = require('./../models/users');
+const {User} = require('../models/user');
 
 let authenticate = async (req, res, next) => {
     try {

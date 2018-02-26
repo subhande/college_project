@@ -1,5 +1,5 @@
 const {ObjectID} = require('mongodb');
-const {User} = require('./../../models/users');
+const {User} = require('../../models/user');
 const jwt = require('jsonwebtoken');
 
 const userOneID = new ObjectID();

@@ -3,7 +3,7 @@ const request = require('supertest');
 const {ObjectID} = require('mongodb');
 
 const {app} = require('./../server');
-const {User} = require('./../models/users');
+const {User} = require('./../models/user');
 
 const {users, populateUser} = require('./seed/seed');
 
