@@ -1,16 +1,15 @@
 const mongoose = require('mongoose');
 
 let facultySchema = new mongoose.Schema({
-    facultyId: {
-        type: Number,
-        length: 10,
-        trim: true
+    user: {
+        type: mongoose.Schema.ObjectId,
+        ref: 'User'
     },
-    teaches: [{
-        type: String,
-        minlength: 1,
+    facultyID: {
+        type: Number,
+        length: 6,
         trim: true
-    }]
+    }
 });
 
 

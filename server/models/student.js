@@ -1,7 +1,11 @@
 const mongoose = require('mongoose');
 
 let StudentSchema = new mongoose.Schema({
-    regId: {
+    user: {
+      type: mongoose.Schema.ObjectId,
+      ref: 'User'
+    },
+    regID: {
         type: Number,
         length: 10,
         trim: true
@@ -15,33 +19,20 @@ let StudentSchema = new mongoose.Schema({
         type: String,
         minlength: 1,
         trim: true,
-        unique:true
     },
     branch: {
         type: String,
         minlength: 1,
         trim: true,
+        default: null
     },
     semester: {
         type: String,
         minlength: 1,
         trim: true
-    },
-    primarySubjects: [{
-        subjects: {
-            type: String,
-            minlength: 1,
-            trim: true
-        }
-    }],
-    optionalSubjects: [{
-        subjects: {
-            type: String,
-            minlength: 1,
-            trim: true
-        }
-    }]
+    }
 });
+
 
 
 let Student = mongoose.model('Student',StudentSchema);
