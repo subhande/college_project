@@ -1,6 +1,8 @@
 require('./config/config');
 
 const express = require('express');
+const path = require('path');
+const exphbs = require('express-handlebars');
 const _ = require('lodash');
 const bodyParser  = require('body-parser');
 const {ObjectID} = require('mongodb');
@@ -15,6 +17,21 @@ let app = express();
 
 // middleware
 
+// Use Static
+
+app.use(express.static(path.join(__dirname, '../public')));
+
+// Set View Engine
+
+app.engine('.hbs', exphbs({
+    extname: '.hbs',
+    defaultLayout: 'home'
+}));
+app.set('view engine', '.hbs');
+
+//Body Parser
+
+app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 
 // Load Routes
@@ -26,6 +43,7 @@ app.use('/',home);
 
 
 
+console.log(path.join(__dirname, '../public'));
 
 app.listen(PORT, () => {
     console.log(`Started up at port ${PORT}`);
