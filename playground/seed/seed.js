@@ -270,12 +270,13 @@ const studentAssignments = [{
 
 const populate = async () => {
     try {
-        await User.insertMany(users);
-        await Student.insertMany(students);
-        await Faculty.insertMany(faculties);
-        await Subject.insertMany(subjects);
-        await Enroll.insertMany(enrolls);
-        await StudentAssignment.insertMany(studentAssignments);
+        const user = new User(users[0]);
+        await user.save();
+        // await Student.insertMany(students);
+        // await Faculty.insertMany(faculties);
+        // await Subject.insertMany(subjects);
+        // await Enroll.insertMany(enrolls);
+        // await StudentAssignment.insertMany(studentAssignments);
     } catch(e) {
         console.log(e);
     }
