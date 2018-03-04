@@ -28,10 +28,6 @@ router.get('/login', (req,res) => {
     res.render('home/login');
 });
 
-router.get('/register', (req,res) => {
-    res.render('home/register');
-});
-
 
 passport.use(new LocalStrategy({usernameField: 'email'},async (email, password, done) => {
 
@@ -67,15 +63,28 @@ passport.deserializeUser(function(id, done) {
 
 router.post('/login', (req, res, next) => {
 
-    console.log(req.body);
-
     passport.authenticate('local',{
-       successRedirect: '/student',
-       failureRedirect: '/login',
-       failureFlash: true
+        successRedirect: '/student',
+        failureRedirect: '/login',
+        failureFlash: true
     })(req, res, next);
 
 });
+
+
+
+router.get('/logout', (req,res) => {
+    req.logout();
+    res.redirect('/login');
+});
+
+
+router.get('/register', (req,res) => {
+
+    res.render('home/register');
+
+});
+
 
 router.post('/register', async (req, res) => {
     let errors = [];
@@ -122,8 +131,7 @@ router.post('/register', async (req, res) => {
             lastName: req.body.lastName,
             username: req.body.username,
             email: req.body.email,
-            password: req.body.password,
-            passwordConfirm: req.body.passwordConfirm
+            role: req.body.role
 
         });
 

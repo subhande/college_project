@@ -31,9 +31,12 @@ app.use(express.static(path.join(__dirname, '../public')));
 
 // Set View Engine
 
+const {selectRole} = require('./helpers/handlebars-helpers');
+
 app.engine('.hbs', exphbs({
     extname: '.hbs',
-    defaultLayout: 'home'
+    defaultLayout: 'home',
+    helpers: {selectRole: selectRole}
 }));
 app.set('view engine', '.hbs');
 

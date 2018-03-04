@@ -7,47 +7,47 @@
 					<div class="form-row">
 						<div class="col-md-6">
 							<label for="exampleInputName">First name</label>
-							<input value="{{firstName}}"  name="firstName" class="form-control" id="exampleInputName" type="text" aria-describedby="nameHelp" placeholder="Enter first name">
+							<input required value="{{firstName}}"  name="firstName" class="form-control" id="exampleInputName" type="text" aria-describedby="nameHelp" placeholder="Enter first name">
 						</div>
 						<div class="col-md-6">
 							<label for="exampleInputLastName">Last name</label>
-							<input value="{{lastName}}"  name="lastName" class="form-control" id="exampleInputLastName" type="text" aria-describedby="nameHelp" placeholder="Enter last name">
+							<input required value="{{lastName}}"  name="lastName" class="form-control" id="exampleInputLastName" type="text" aria-describedby="nameHelp" placeholder="Enter last name">
 						</div>
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="exampleInputUsername">Username</label>
-					<input value="{{username}}" name="username" class="form-control" id="exampleInputUsername" type="text" aria-describedby="usernameHelp" placeholder="Enter username">
+					<input required value="{{username}}" name="username" class="form-control" id="exampleInputUsername" type="text" aria-describedby="usernameHelp" placeholder="Enter username">
 				</div>
 				<div class="form-group">
 					<label for="exampleInputEmail1">Email address</label>
-					<input value="{{email}}" name="email" class="form-control" id="exampleInputEmail1" type="email" aria-describedby="emailHelp" placeholder="Enter email">
+					<input required value="{{email}}" name="email" class="form-control" id="exampleInputEmail1" type="email" aria-describedby="emailHelp" placeholder="Enter email">
 				</div>
 				<div class="form-group">
 					<div class="form-row">
 						<div class="col-md-6">
 							<label for="exampleInputPassword1">Password</label>
-							<input value="{{password}}" name="password" class="form-control" id="exampleInputPassword1" type="password" placeholder="Password">
+							<input required value="{{password}}" name="password" class="form-control" id="exampleInputPassword1" type="password" placeholder="Password">
 						</div>
 						<div class="col-md-6">
 							<label  for="exampleConfirmPassword">Confirm password</label>
-							<input value="{{passwordConfirm}}" name="passwordConfirm" class="form-control" id="exampleConfirmPassword" type="password" placeholder="Confirm password">
+							<input required value="{{passwordConfirm}}" name="passwordConfirm" class="form-control" id="exampleConfirmPassword" type="password" placeholder="Confirm password">
 						</div>
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="isStudennt" class="form-check-inline btn btn-primary">
-						<input class="bg-danger" type="radio" name="role" value="student" id="isStudennt"> Student
+						<input class="bg-danger" {{selectRole role 'student'}} type="radio" name="role" value="student" id="isStudennt"> Student
 					</label>
 					<label for="isStudennt" class="form-check-inline btn btn-primary">
-						<input class="bg-danger" type="radio" name="role" value="faculty"id="isFaculty"> Faculty
+						<input class="bg-danger" {{selectRole role 'faculty'}} type="radio" name="role" value="faculty"id="isFaculty"> Faculty
 					</label>
 				</div>
 				<button type="submit" class="btn btn-primary btn-block">Register</button>
 			</form>
 			<div class="text-center">
 				<a class="d-block small mt-3" href="/login">Login Page</a>
-				<a class="d-block small" href="forgot-password.html">Forgot Password?</a>
+				<a class="d-block small" href="/login">Forgot Password?</a>
 				<a class="d-block small" href="/">Home Page?</a>
 			</div>
 		</div>
