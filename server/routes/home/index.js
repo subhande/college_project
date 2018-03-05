@@ -31,6 +31,8 @@ router.get('/login', (req,res) => {
 
 passport.use(new LocalStrategy({usernameField: 'email'},async (email, password, done) => {
 
+
+
     const user = await User.findOne({email});
     if(!user){
         return done(null, false, {message: 'No user found'});
@@ -61,10 +63,11 @@ passport.deserializeUser(function(id, done) {
 });
 
 
-router.post('/login', (req, res, next) => {
-
+router.post('/login',async (req, res, next) => {
+    const user = await User.findOne({email: req.body.email});
+    const redirect = user.role.isStudent ? "/student" : "/faculty";
     passport.authenticate('local',{
-        successRedirect: '/student',
+        successRedirect: redirect,
         failureRedirect: '/login',
         failureFlash: true
     })(req, res, next);

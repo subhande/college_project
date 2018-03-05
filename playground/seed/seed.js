@@ -274,7 +274,7 @@ const populate = async () => {
         await user.save();
         // await Student.insertMany(students);
         // await Faculty.insertMany(faculties);
-        // await Subject.insertMany(subjects);
+        // await Subject.insertMany(subject);
         // await Enroll.insertMany(enrolls);
         // await StudentAssignment.insertMany(studentAssignments);
     } catch(e) {

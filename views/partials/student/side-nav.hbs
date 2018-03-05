@@ -5,93 +5,59 @@
 	</button>
 	<div class="collapse navbar-collapse" id="navbarResponsive">
 		<ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
-			<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
-				<a class="nav-link" href="index.html">
+			<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Details">
+				<a class="nav-link" href="/student">
 					<i class="fa fa-fw fa-dashboard"></i>
 					<span class="nav-link-text">Details</span>
 				</a>
 			</li>
-			<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
-				<a class="nav-link" href="charts.html">
-					<i class="fa fa-fw fa-area-chart"></i>
-					<span class="nav-link-text">Subjects</span>
+			<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Subjects">
+				<a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseSubjects" data-parent="#exampleAccordion">
+					<i class="fa fa-fw fa-wrench"></i>
+					<span class="nav-link-text">Subject</span>
 				</a>
+				<ul class="sidenav-second-level collapse" id="collapseSubjects">
+					<li>
+						<a href="/student/subject">Enrolled Subjects</a>
+					</li>
+					<li>
+						<a href="/student/subject/add">Add New Subjects</a>
+					</li>
+				</ul>
 			</li>
-			<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
-				<a class="nav-link" href="tables.html">
+			<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Assignment">
+				<a class="nav-link" href="/student/assignments">
 					<i class="fa fa-fw fa-table"></i>
 					<span class="nav-link-text">Assignments</span>
 				</a>
 			</li>
-			<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
-				<a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
+			<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Attendance">
+				<a class="nav-link" href="/student/attendance">
+					<i class="fa fa-fw fa-table"></i>
+					<span class="nav-link-text">Attendance</span>
+				</a>
+			</li>
+			<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Questions">
+				<a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseQuestions" data-parent="#exampleAccordion">
 					<i class="fa fa-fw fa-wrench"></i>
-					<span class="nav-link-text">Attendence</span>
-				</a>
-				<ul class="sidenav-second-level collapse" id="collapseComponents">
-					<li>
-						<a href="navbar.html">Labs</a>
-					</li>
-					<li>
-						<a href="cards.html">Notes</a>
-					</li>
-				</ul>
-			</li>
-			<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Example Pages">
-				<a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseExamplePages" data-parent="#exampleAccordion">
-					<i class="fa fa-fw fa-file"></i>
-					<span class="nav-link-text">Update</span>
-				</a>
-				<ul class="sidenav-second-level collapse" id="collapseExamplePages">
-					<li>
-						<a href="login.html">Login Page</a>
-					</li>
-					<li>
-						<a href="register.html">Registration Page</a>
-					</li>
-					<li>
-						<a href="forgot-password.html">Forgot Password Page</a>
-					</li>
-					<li>
-						<a href="blank.html">Blank Page</a>
-					</li>
-				</ul>
-			</li>
-			<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
-				<a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti" data-parent="#exampleAccordion">
-					<i class="fa fa-fw fa-sitemap"></i>
 					<span class="nav-link-text">Questions</span>
 				</a>
-				<ul class="sidenav-second-level collapse" id="collapseMulti">
+				<ul class="sidenav-second-level collapse" id="collapseQuestions">
 					<li>
-						<a href="#">Second Level Item</a>
+						<a href="/student/questions">Search</a>
 					</li>
 					<li>
-						<a href="#">Second Level Item</a>
+						<a href="/student/questions/myquestions">My Questions</a>
 					</li>
 					<li>
-						<a href="#">Second Level Item</a>
-					</li>
-					<li>
-						<a class="nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti2">Third Level</a>
-						<ul class="sidenav-third-level collapse" id="collapseMulti2">
-							<li>
-								<a href="#">Third Level Item</a>
-							</li>
-							<li>
-								<a href="#">Third Level Item</a>
-							</li>
-							<li>
-								<a href="#">Third Level Item</a>
-							</li>
-						</ul>
+						<a href="/student/questions/myanswers">My Answers</a>
 					</li>
 				</ul>
 			</li>
-			<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Link">
-				<a class="nav-link" href="#">
-					<i class="fa fa-fw fa-link"></i>
-					<span class="nav-link-text">Link</span>
+			<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Update">
+				<a class="nav-link" href="/student/update">
+					<i class="fa fa-fw fa-table"></i>
+					<span class="nav-link-text">Update</span>
 				</a>
 			</li>
 		</ul>
