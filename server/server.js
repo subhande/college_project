@@ -92,20 +92,28 @@ app.use((req, res, next)=>{
 // Load Routes
 const home = require('./routes/home/index');
 const student = require('./routes/student/index');
+
 const subjectStudent = require('./routes/student/subject');
 const assignmentsStudent = require('./routes/student/assignments');
 const questionsStudent = require('./routes/student/questions');
 const attendanceStudent = require('./routes/student/attendance');
 const updateStudent = require('./routes/student/update');
 
+const faculty = require('./routes/faculty/index');
+const updateFaculty = require('./routes/faculty/update');
+
 // Use Routes
 
 app.use('/',home);
 app.use('/student',student);
+
 app.use('/student/subject',subjectStudent);
 app.use('/student/assignments',assignmentsStudent);
 app.use('/student/attendance',attendanceStudent);
 app.use('/student/update',updateStudent);
+
+app.use('/faculty',faculty);
+app.use('/faculty/update',updateFaculty);
 
 
 

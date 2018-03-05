@@ -48,24 +48,19 @@ router.post('/info', async (req, res) => {
 
     try{
 
-        const findStudent = await Student.findOne({user: req.user._id});
+        const student = new Student({
+            user: req.user._id,
+            regID: req.body.regID,
+            rollNo: req.body.rollNo,
+            courseName: req.body.course,
+            branch: req.body.branch,
+            semester: req.body.sem
+        });
 
-        if(findStudent){
-            res.redirect('/student');
-        } else {
-            const student = new Student({
-                user: req.user._id,
-                regID: req.body.regID,
-                rollNo: req.body.rollNo,
-                courseName: req.body.course,
-                branch: req.body.branch,
-                semester: req.body.sem
-            });
+        await student.save();
+        const newStudent = await Student.findOne({user: req.user._id});
+        res.redirect('/student');
 
-            await student.save();
-            const newStudent = await Student.findOne({user: req.user._id});
-            res.redirect('/student');
-        }
     } catch(e) {
 
     }
