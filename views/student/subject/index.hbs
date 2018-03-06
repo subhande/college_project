@@ -1,21 +1,29 @@
 <h1>Enrolled Subjects</h1>
 
 
-<table class=" table table-responsive">
+<table class=" table table-bordered table-responsives">
 	<thead>
 		<tr>
-			<th>Name</th>
+			<th>Subject Name</th>
+			<th>Subject Code</th>
 			<th>Faculty Name</th>
-			<th>Notes</th>
+			<th>Action</th>
 		</tr>
 	</thead>
 
 	<tbody>
-		<tr>
-			<td>DS</td>
-			<td>Subhan De</td>
-			<td><a href="">DS.pdf</a></td>
-		</tr>
+		{{#each enrolls}}
+			<tr>
+				<th>{{subject.name}}</th>
+				<th>{{subject.code}}</th>
+				<th>{{subject.faculty.user.firstName}} {{subject.faculty.user.lastName}}</th>
+				<th>
+					<form action="/student/subject/{{_id}}?_method=DELETE" METHOD="POST">
+						<button class="btn btn-danger">Unenroll</button>
+					</form>
+				</th>
+			</tr>
+		{{/each}}
 	</tbody>
 
 

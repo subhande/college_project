@@ -1,3 +1,7 @@
+
+
+
+
 module.exports = {
 
     userAuthenticated: function(req, res, next){
@@ -9,5 +13,7 @@ module.exports = {
         res.redirect('/login');
 
     }
+
+
 
 };
