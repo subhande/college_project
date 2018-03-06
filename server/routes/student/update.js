@@ -41,10 +41,10 @@ router.get('/info', (req, res) => {
 });
 
 
-router.post('/info', async (req, res) => {
 
-    // TO DO :
-    // create documnet in student and redirect to dashboard
+
+
+router.post('/info', async (req, res) => {
 
     try{
 

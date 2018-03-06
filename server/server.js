@@ -32,11 +32,12 @@ app.use(express.static(path.join(__dirname, '../public')));
 // Set View Engine
 
 const {selectRole} = require('./helpers/handlebars-helpers');
+const {formatDate} = require('./helpers/handlebars-helpers');
 
 app.engine('.hbs', exphbs({
     extname: '.hbs',
     defaultLayout: 'home',
-    helpers: {selectRole: selectRole}
+    helpers: {selectRole: selectRole, formatDate: formatDate}
 }));
 app.set('view engine', '.hbs');
 
@@ -91,6 +92,7 @@ app.use((req, res, next)=>{
 
 // Load Routes
 const home = require('./routes/home/index');
+
 const student = require('./routes/student/index');
 
 const subjectStudent = require('./routes/student/subject');
@@ -100,19 +102,31 @@ const attendanceStudent = require('./routes/student/attendance');
 const updateStudent = require('./routes/student/update');
 
 const faculty = require('./routes/faculty/index');
+
+const subjectsFaculty = require('./routes/faculty/subjects');
+const assignmentsFaculty = require('./routes/faculty/assignments');
+const questionsFaculty = require('./routes/faculty/questions');
+const attendanceFaculty = require('./routes/faculty/attendance');
 const updateFaculty = require('./routes/faculty/update');
 
 // Use Routes
 
 app.use('/',home);
+
 app.use('/student',student);
 
 app.use('/student/subject',subjectStudent);
 app.use('/student/assignments',assignmentsStudent);
+app.use('/student/questions',questionsStudent);
 app.use('/student/attendance',attendanceStudent);
 app.use('/student/update',updateStudent);
 
 app.use('/faculty',faculty);
+
+app.use('/faculty/subjects',subjectsFaculty);
+app.use('/faculty/assignments',assignmentsFaculty);
+app.use('/faculty/questions',questionsFaculty);
+app.use('/faculty/attendance',attendanceFaculty);
 app.use('/faculty/update',updateFaculty);
 
 

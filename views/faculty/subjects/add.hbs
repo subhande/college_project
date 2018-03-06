@@ -1,0 +1,41 @@
+<h1 class="alert-heading">Add New Stubject</h1>
+
+<table class="table table-bordered table-responsives">
+	<thead>
+		<tr>
+			<th>Subject Name</th>
+			<th>Subject Code</th>
+			<th>Add</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		{{#each subs}}
+			<tr>
+				<th>{{name}}</th>
+				<th>{{code}}</th>
+				<th>
+					<form action="/faculty/subjects/add/{{_id}}?_method=PATCH" method="post">
+						<button class="btn btn-primary" type="submit" >Add</button>
+					</form>
+				</th>
+			</tr>
+		{{/each}}
+	</tbody>
+</table>
+
+
+<form action="/faculty/subjects/add" method="post">
+
+	<div class="form-group">
+		<label for="subjectName">Subject Name</label>
+		<input  name="name" class="form-control" id="subjectName" type="text" aria-describedby="subjectName" placeholder="Enter Subject Name">
+	</div>
+
+	<div class="form-group">
+		<label for="subjectCode">Subject Code</label>
+		<input  name="code" class="form-control" id="subjectCode" type="text" aria-describedby="subjectCode" placeholder="Enter Subject Code">
+	</div>
+
+	<button class="btn btn-primary btn-block" type="submit">Create</button>
+</form>

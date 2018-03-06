@@ -1,0 +1,28 @@
+<h1 class="alert-heading">Add New Stubject</h1>
+
+
+
+
+<form action="/faculty/assignments/add" method="post">
+
+	<div class="form-group">
+		<label for="subject">Subject Name</label>
+		<select class="form-control" name="subject" id="subject">
+			{{#each subs}}
+				<option value="{{_id}}">{{name}}</option>
+			{{/each}}
+		</select>
+	</div>
+
+	<div class="form-group">
+		<label for="assignmentName">Assignment Name</label>
+		<input  name="assignmentName" class="form-control" id="assignmentName" type="text" aria-describedby="assignmentName" placeholder="Enter Assignment Name">
+	</div>
+
+	<div class="form-group">
+		<label for="date">Submission Date</label>
+		<input  name="date" class="form-control" id="date" type="date" aria-describedby="date">
+	</div>
+
+	<button class="btn btn-primary btn-block" type="submit">Create</button>
+</form>

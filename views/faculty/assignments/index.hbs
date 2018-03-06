@@ -1,0 +1,28 @@
+<h1>Assignments</h1>
+
+
+<table class="table table-bordered table-responsives">
+	<thead>
+	<tr>
+		<th>Subject Name</th>
+		<th>Assignment Name</th>
+		<th>Submission Date</th>
+		<th>Remove</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	{{#each assign}}
+		<tr>
+			<th>{{name}}</th>
+			<th>{{subject.name}}</th>
+			<th>{{formatDate submissionDate}}</th>
+			<th>
+				<form action="/faculty/assignments/{{_id}}?_method=DELETE" method="post">
+					<button class="btn btn-danger" type="submit" >Remove</button>
+				</form>
+			</th>
+		</tr>
+	{{/each}}
+	</tbody>
+</table>
