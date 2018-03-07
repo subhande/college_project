@@ -12,13 +12,13 @@
 	</thead>
 
 	<tbody>
-		{{#each enrolls}}
+		{{#each subs}}
 			<tr>
-				<th>{{subject.name}}</th>
-				<th>{{subject.code}}</th>
-				<th>{{subject.faculty.user.firstName}} {{subject.faculty.user.lastName}}</th>
+				<th>{{name}}</th>
+				<th>{{code}}</th>
+				<th>{{faculty.user.firstName}} {{faculty.user.lastName}}</th>
 				<th>
-					<form action="/student/subject/{{_id}}?_method=DELETE" METHOD="POST">
+					<form action="/student/subject/{{_id}}?_method=PATCH" METHOD="POST">
 						<button class="btn btn-danger">Unenroll</button>
 					</form>
 				</th>

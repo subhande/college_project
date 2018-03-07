@@ -31,7 +31,7 @@ module.exports = {
     },
 
     isEnrolled: function(id, sid) {
-        isEnrolledAsync(id, sid).then((res) => {
+        return isEnrolledAsync(id, sid).then((res) => {
             //console.log(res);
             if(res) {
                 return true;

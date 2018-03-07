@@ -50,13 +50,24 @@ router.get('/add', async (req, res) => {
 router.post('/add', async (req, res) => {
     try {
         const faculty = await Faculty.findOne({user: req.user._id});
-        const assignment = new Assignment({
+        let assignment = new Assignment({
             subject: req.body.subject,
             faculty: faculty._id,
             name: req.body.assignmentName,
             submissionDate: req.body.date
         });
+        assignment = await assignment.save();
+
+        const subject = await Subject.findOne({_id: req.body.subject})
+            .select('students')
+            .exec();
+
+        subject.students.map(student => {
+            let stu = {student: student,submitted: false };
+           assignment.students.push(stu);
+        });
         await assignment.save();
+
         res.redirect('/faculty/assignments');
     } catch(e){
         console.log(e);

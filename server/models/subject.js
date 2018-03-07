@@ -1,11 +1,6 @@
 const mongoose = require('mongoose');
 
 let subjectSchema = new mongoose.Schema({
-    faculty: {
-        type: mongoose.Schema.ObjectId,
-        ref: 'Faculty',
-        default: null
-    },
     name: {
         type: String,
         unique: true,
@@ -19,7 +14,16 @@ let subjectSchema = new mongoose.Schema({
         required: true,
         trim: true,
         minlength:1
-    }
+    },
+    faculty: {
+        type: mongoose.Schema.ObjectId,
+        ref: 'Faculty',
+        default: null
+    },
+    students:[{
+        type: mongoose.Schema.ObjectId,
+        ref: 'Student'
+    }]
 });
 
 

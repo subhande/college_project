@@ -6,7 +6,7 @@ const {User} = require('../../models/user');
 const {Subject} = require('../../models/subject');
 const {Faculty} = require('../../models/faculty');
 const {Student} = require('../../models/student');
-const {Enroll} = require('../../models/enroll');
+const {Assignment} = require('../../models/assignment');
 
 
 router.all('/*', userAuthenticated, (req, res, next)=>{
@@ -23,23 +23,19 @@ router.get('/',async (req, res) => {
 
     try {
         const student = await Student.findOne({user: req.user._id});
-        const enrolls = await Enroll.find({student: student._id})
+        let subjects = await Subject.find({ students: {$in: [student._id]}})
             .populate({
-                path: 'subject',
-                model: 'Subject',
+                path: 'faculty',
+                model: 'Faculty',
+                select: '_id',
                 populate:{
-                    path: 'faculty',
-                    model: 'Faculty',
-                    select: '_id',
-                    populate:{
                         path: 'user',
                         model: 'User',
                         select: ['firstName','lastName']
                     }
-                }
             });
         res.render('student/subject/index', {
-            enrolls: enrolls
+            subs: subjects
         });
     } catch(e) {
         res.render('student/subject/index');
@@ -48,12 +44,18 @@ router.get('/',async (req, res) => {
 });
 
 
-router.delete('/:id',async (req, res) => {
+router.patch('/:id',async (req, res) => {
 
     try {
-        const enrolls = await Enroll.findOneAndRemove({_id: req.params.id});
+        const student = await Student.findOne({user: req.user._id});
+
+        await Subject.update({_id: req.params.id},{$pull: {students: student._id}});
+
+        await Assignment.update({subject: req.params.id},{$pull: {students:{$in: {student: student._id}}}}, {multi: true});
+
         res.redirect('/student/subject');
     } catch(e) {
+        console.log(e);
         res.redirect('/student/subject');
     }
 
@@ -63,7 +65,7 @@ router.get('/add',async (req, res) => {
 
     try{
         const student = await Student.findOne({user: req.user._id});
-        const subjects = await Subject
+        let subjects = await Subject.find({ students: {$nin: [student._id]}})
             .where("faculty").ne(null)
             .populate({
                 path: 'faculty',
@@ -76,15 +78,13 @@ router.get('/add',async (req, res) => {
                 }
             }).exec();
 
-        subjects.map(subject => {
-           subject.sid = student._id;
-           return subject;
-        });
+        //console.log(subjects);
+
         res.render('student/subject/add', {
-            subs:subjects
+            subs: subjects
         });
     } catch(e) {
-
+        console.log(e);
     }
 
 });
@@ -92,12 +92,11 @@ router.get('/add',async (req, res) => {
 router.post('/add/:id', async (req, res) => {
    try{
        const student = await Student.findOne({user: req.user._id});
-       const enroll = new Enroll({
-           student: student._id,
-           subject: req.params.id
-       });
 
-       await enroll.save();
+       await Subject.update({_id: req.params.id},{$push: {students: student._id}});
+
+       await Assignment.update({subject: req.params.id},{$push: {students: {student: student._id, submitted: false}}}, {multi: true});
+
        res.redirect('/student/subject');
    } catch(e) {
        console.log(e);

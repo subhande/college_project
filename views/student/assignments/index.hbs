@@ -1,9 +1,9 @@
 <h1>Assignments</h1>
 
 
-<table class="table table-responsive">
+<table class="table table-bordered">
 	<thead>
-	<tr class="table-primary">
+	<tr>
 		<th>Assignment Name</th>
 		<th>Subject</th>
 		<th>Faculty Name</th>
@@ -12,12 +12,14 @@
 	</thead>
 
 	<tbody>
-	<tr class="table-info">
-		<td>Stack</td>
-		<td>DS</td>
-		<td>Subhan De</td>
-		<td class="bg-warning">27th March</td>
-	</tr>
+	{{#each assignments}}
+		<tr>
+			<th>{{name}}</th>
+			<th>{{subject.name}}</th>
+			<th>{{faculty.user.firstName}} {{faculty.user.lastName}}</th>
+			<th class="alert-danger">{{formatDate submissionDate}}</th>
+		</tr>
+	{{/each}}
 	</tbody>
 
 

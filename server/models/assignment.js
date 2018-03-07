@@ -11,6 +11,16 @@ let assigmentSchema = new mongoose.Schema({
         ref: 'Faculty',
         required: true
     },
+    students: [{
+        student: {
+            type: mongoose.Schema.ObjectId,
+            ref: 'Student'
+        },
+        submitted:{
+            type: Boolean,
+            default: false
+        }
+    }],
     name: {
         type: String,
         trim: true,
