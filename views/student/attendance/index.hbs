@@ -1,1 +1,19 @@
-<h1>Attendance</h1>
+<table class="table table-bordered">
+	<thead>
+	<tr>
+		<th>Subject Name</th>
+		<th>Faculty Name</th>
+		<th>Attendance</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	{{#each details}}
+		<tr>
+			<th>{{subject}}</th>
+			<th>{{faculty}}</th>
+			<th>{{percentage}}%</th>
+		</tr>
+	{{/each}}
+	</tbody>
+</table>

@@ -1,0 +1,33 @@
+<h1>Attendance</h1>
+
+
+<form action="/faculty/attendance/update" method="post">
+	<table class="table table-bordered">
+		<thead><th>{{subject.name}}</th><th>{{date}}</th></thead>
+		<tr>
+			<th>Student Name</th>
+			<th><input type="checkbox" onclick="toggle(this)"> Select All</th>
+		</tr>
+		<tbody>
+		<input type="text" hidden name="id" value="{{subject._id}}">
+		<input type="date" hidden name="date" value="{{date}}">
+		{{#each subject.students}}
+			<tr>
+				<th>{{user.firstName}} {{user.lastName}}</th>
+				<th><input type="checkbox" name="students" value="{{_id}}"></th>
+			</tr>
+		{{/each}}
+		</tbody>
+	</table>
+	<button class="btn btn-danger btn-block" type="submit">Update</button>
+</form>
+
+<script>
+	function toggle(source) {
+		let checkboxes = document.querySelectorAll('input[type="checkbox"]');
+		for (let i = 0; i < checkboxes.length; i++) {
+			if (checkboxes[i] != source)
+				checkboxes[i].checked = source.checked;
+		}
+	}
+</script>

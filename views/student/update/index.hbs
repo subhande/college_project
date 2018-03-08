@@ -1,56 +1,70 @@
-<div class="container">
-	<div class="card mx-auto mt-5">
-		<div class="card-header">Update Student Info</div>
-		<div class="card-body">
-			<form action="/student/update" method="post">
 
-				<div class="form-group">
-					<label for="regID">Registrain ID</label>
-					<input  name="regID" class="form-control" id="regID" type="text" aria-describedby="Reg ID" placeholder="Enter Registrain ID">
+<h1 class="">Update Details</h1>
+<div class="card-body">
+	<form action="/student/update" method="post">
+		<div class="form-group">
+			<div class="form-row">
+				<div class="col-md-6">
+					<label for="exampleInputName">First name</label>
+					<input required value="{{firstName}}"  name="firstName" class="form-control" id="exampleInputName" type="text" aria-describedby="nameHelp" placeholder="Enter first name">
 				</div>
-				<div class="form-group">
-					<label for="rollNo">Roll No</label>
-					<input  name="rollNo" class="form-control" id="rollNo" type="text" aria-describedby="rollNo" placeholder="Enter Roll No">
+				<div class="col-md-6">
+					<label for="exampleInputLastName">Last name</label>
+					<input required value="{{lastName}}"  name="lastName" class="form-control" id="exampleInputLastName" type="text" aria-describedby="nameHelp" placeholder="Enter last name">
 				</div>
-				<div class="form-group">
-					<label for="course">Course Name</label>
-					<select class="form-control" name="course" id="course">
-						<option value="B.Tech">B.Tech</option>
-						<option value="MCA">MCA</option>
-						<option value="MBA">MBA</option>
-					</select>
-				</div>
-				<div class="form-group">
-					<label for="branch">Branch</label>
-					<select class="form-control" name="branch" id="branch">
-						<option value="Civil">Civil</option>
-						<option value="CSE">CSE</option>
-						<option value="ECE">ECE</option>
-						<option value="EE">EE</option>
-						<option value="EEE">EEE</option>
-						<option value="ME">ME</option>
-					</select>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="exampleInputUsername">Username</label>
+			<input required value="{{username}}" name="username" class="form-control" id="exampleInputUsername" type="text" aria-describedby="usernameHelp" placeholder="Enter username">
+		</div>
+		<div class="form-group">
+			<label for="exampleInputEmail1">Email address</label>
+			<input required value="{{email}}" name="email" class="form-control" id="exampleInputEmail1" type="email" aria-describedby="emailHelp" placeholder="Enter email">
+		</div>
 
-				</div>
-				<div class="form-group">
-					<label for="sem">Semester</label>
-					<select class="form-control" name="sem" id="sem">
-						<option value="1st">1st</option>
-						<option value="2nd">2nd</option>
-						<option value="3rd">3rd</option>
-						<option value="4th">4th</option>
-						<option value="5th">5th</option>
-						<option value="6th">6th</option>
-						<option value="7th">7th</option>
-						<option value="8th">8th</option>
-					</select>
-				</div>
-
-
-				<button class="btn btn-primary btn-block" type="submit">Update</button>
-
-			</form>
+		<div class="form-group">
+			<label for="regID">Registrain ID</label>
+			<input required value="{{regID}}"  name="regID" class="form-control" id="regID" type="text" aria-describedby="Reg ID" placeholder="Enter Registrain ID">
+		</div>
+		<div class="form-group">
+			<label for="rollNo">Roll No</label>
+			<input required value="{{rollNo}}" name="rollNo" class="form-control" id="rollNo" type="text" aria-describedby="rollNo" placeholder="Enter Roll No">
+		</div>
+		<div class="form-group">
+			<label for="course">Course Name</label>
+			<select class="form-control" name="course" id="course">
+				<option {{select courseName 'B.Tech'}} value="B.Tech">B.Tech</option>
+				<option {{select courseName 'MCA'}} value="MCA">MCA</option>
+				<option {{select courseName 'MBA'}} value="MBA">MBA</option>
+			</select>
+		</div>
+		<div class="form-group">
+			<label for="branch">Branch</label>
+			<select class="form-control" name="branch" id="branch">
+				<option {{select branch 'Civil'}} value="Civil">Civil</option>
+				<option {{select branch 'CSE'}} value="CSE">CSE</option>
+				<option {{select branch 'ECE'}} value="ECE">ECE</option>
+				<option {{select branch 'EE'}} value="EE">EE</option>
+				<option {{select branch 'EEE'}} value="EEE">EEE</option>
+				<option {{select branch 'ME'}} value="ME">ME</option>
+			</select>
 
 		</div>
-	</div>
+		<div class="form-group">
+			<label for="sem">Semester</label>
+			<select class="form-control" name="sem" id="sem">
+				<option {{select semester '1st'}} value="1st">1st</option>
+				<option {{select semester '2nd'}} value="2nd">2nd</option>
+				<option {{select semester '3rd'}} value="3rd">3rd</option>
+				<option {{select semester '4th'}} value="4th">4th</option>
+				<option {{select semester '5th'}} value="5th">5th</option>
+				<option {{select semester '6th'}} value="6th">6th</option>
+				<option {{select semester '7th'}} value="7th">7th</option>
+				<option {{select semester '8th'}} value="8th">8th</option>
+			</select>
+		</div>
+
+		<button class="btn btn-danger btn-block" type="submit">Update</button>
+	</form>
 </div>

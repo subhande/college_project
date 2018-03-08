@@ -33,12 +33,12 @@ app.use(express.static(path.join(__dirname, '../public')));
 
 const {selectRole} = require('./helpers/handlebars-helpers');
 const {formatDate} = require('./helpers/handlebars-helpers');
-const {isEnrolled} = require('./helpers/handlebars-helpers');
+const {select} = require('./helpers/handlebars-helpers');
 
 app.engine('.hbs', exphbs({
     extname: '.hbs',
     defaultLayout: 'home',
-    helpers: {selectRole: selectRole, formatDate: formatDate, isEnrolled:isEnrolled}
+    helpers: {selectRole: selectRole, formatDate: formatDate, select:select}
 }));
 app.set('view engine', '.hbs');
 

@@ -16,23 +16,54 @@ router.all('/*', userAuthenticated, (req, res, next)=>{
 });
 
 
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
 
-    //TO DO : Fetch assignments related to specific students
+    const student = await Student.findOne({user: req.user._id});
 
-    res.render('student/update/index');
+    res.render('student/update/index',{
+        firstName: req.user.firstName,
+        lastName: req.user.lastName,
+        username: req.user.username,
+        email: req.user.email,
+        regID: student.regID,
+        rollNo: student.rollNo,
+        courseName: student.courseName,
+        branch: student.branch,
+        semester: student.semester,
+    });
 
 });
 
 
-router.post('/', (req, res) => {
+router.post('/', async (req, res) => {
+    //console.log(req.body);
+    let updateUser = {
+        $set: {
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            username: req.body.username,
+            email: req.body.email,
+        }
+    };
 
-    //TO DO : Update the student details
-    console.log(req.body);
+    let updateStudent = {
+        $set: {
+            regID: req.body.regID,
+            rollNo: req.body.rollNo,
+            courseName: req.body.course,
+            branch: req.body.branch,
+            semester: req.body.sem,
+        }
+    };
 
-    res.render('student/update/index');
+    await User.update({_id: req.user._id},updateUser);
+    await Student.update({user: req.user._id},updateStudent);
+
+    res.redirect('/student');
 
 });
+
+
 
 router.get('/info', (req, res) => {
 

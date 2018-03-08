@@ -1,29 +1,17 @@
 const mongoose = require('mongoose');
 
 let attendenceSchema = new mongoose.Schema({
-    student: {
+    students: [{
         type: mongoose.Schema.ObjectId,
         ref: 'Student'
-    },
+    }],
     subject: {
         type: mongoose.Schema.ObjectId,
         ref: 'Subject'
     },
-    totalClass: {
-        type: Number
-    },
-    totalAttended: {
-        type: Number
-    },
-    record:[{
-        date: {
-            type: Date
-        },
-        attended:{
-            type: Boolean
-        }
-
-    }]
+    date: {
+        type: Date
+    }
 
 });
 

@@ -1,0 +1,34 @@
+<h1>Attendance</h1>
+
+
+<form action="/faculty/attendance" method="post">
+	<div class="form-group">
+		<label for="subject">Subject</label>
+		<select class="form-control" name="subject" id="subject">
+			{{#each subs}}
+				<option value="{{_id}}">{{name}}</option>
+			{{/each}}
+		</select>
+	</div>
+	<hr>
+	<div class="form-group">
+		<input class="form-control" name="date" id="datePicker" type="date">
+	</div>
+	<button class="btn btn-danger btn-group" href="" >Update</button>
+</form>
+
+<br><br><br>
+<hr>
+
+<form action="/faculty/attendance/show" method="post">
+	<div class="form-group">
+		<label for="subject">Subject</label>
+		<select class="form-control" name="subject" id="subject">
+			{{#each subs}}
+				<option value="{{_id}}">{{name}}</option>
+			{{/each}}
+		</select>
+	</div>
+	<hr>
+	<button name="update" value="date" class="btn btn-danger btn-group" href="" >Show</button>
+</form>
