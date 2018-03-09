@@ -1,0 +1,20 @@
+<div>
+
+	<table class="table table-bordered">
+		<tbody>
+		<tr>
+			<th>Questions</th>
+
+		</tr>
+
+		</tbody>
+		<tbody>
+		{{#each questions}}
+			<tr>
+				<th><a href="/student/questions/question/{{_id}}">{{question}}</a></th>
+			</tr>
+		{{/each}}
+		</tbody>
+	</table>
+	<h1>{{nomatch}}</h1>
+</div>

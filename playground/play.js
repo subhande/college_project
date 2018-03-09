@@ -8,7 +8,7 @@ const {Student} = require('../server/models/student');
 const {Faculty} = require('../server/models/faculty');
 const {Subject} = require('../server/models/subject');
 const {Enroll} = require('../server/models/enroll');
-const {StudentAssignment} = require('../server/models/student_assignment');
+const {StudentAssignment} = require('../server/models/question');
 const {Assignment} = require('../server/models/assignment');
 
 

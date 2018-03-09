@@ -1,0 +1,11 @@
+
+<h1 class="">Search</h1>
+<div class="card-body">
+	<form action="/student/questions/search" method="post">
+		<div class="form-group">
+			<label for="search"><b>Search Keyword</b></label>
+			<input required value="{{search}}" name="search" class="form-control" id="search" type="text" aria-describedby="question" placeholder="Enter Search Keyword">
+		</div>
+		<button class="btn btn-danger btn-block" type="submit">Search</button>
+	</form>
+</div>

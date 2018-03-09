@@ -11,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "async": "^2.6.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.2",
     "connect-flash": "^0.1.1",
@@ -29,6 +30,7 @@
     "validator": "^9.4.0"
   },
   "devDependencies": {
+    "@types/async": "^2.0.47",
     "@types/bcryptjs": "^2.4.1",
     "@types/body-parser": "^1.16.8",
     "@types/connect-flash": "0.0.34",
