@@ -36,7 +36,7 @@
 			<div class="card my-4 border-danger">
 				<h5 class="card-header">Answer:</h5>
 				<div class="card-body">
-					<form action="/student/questions/question/{{que._id}}" method="post" class="">
+					<form action="/faculty/questions/question/{{que._id}}" method="post" class="">
 						<div class="form-group">
 							<textarea name="answer" class="form-control" rows="3"></textarea>
 						</div>
@@ -53,14 +53,15 @@
 					<div class="card-header">
 						<div class="card-body">
 							<h5 class="mt-0">{{user.firstName}} {{user.lastName}}</h5>
-							<p>Posted on {{formatDate adate}}</p>
-							<p>Upvotes: {{upvotes}}</p>
-							<p>{{#if isApproved}}Approved{{else}}Unapproved{{/if}}</p>
-							<p>Answer: {{answer}}</p>
+							<div>Posted on {{formatDate adate}}</div>
+							<div>Upvotes: {{upvotes}}</div>
+							<div>{{#if isApproved}}Approved{{else}}Unapproved{{/if}}</div>
+							<div>Answer: {{answer}}</div>
 						</div>
-						<a href="/student/questions/question/upvote/{{@root.que._id}}/{{_id}}" onclick="upvote(this,'{{_id}}')" id="upvote" class="btn btn-primary" >Upvote</a>
-
+						<a href="/faculty/questions/question/upvote/{{@root.que._id}}/{{_id}}" onclick="upvote(this,'{{_id}}')" id="upvote" class="btn btn-primary" >Upvote</a>
+						<a href="/faculty/questions/question/{{#if isApproved}}unapprove{{else}}approve{{/if}}/{{@root.que._id}}/{{_id}}" onclick="approve(this,'{{_id}}')" id="approve" class="btn btn-primary">{{#if isApproved}}Unapprove{{else}}Approve{{/if}}</a>
 					</div>
+
 				</div>
 				<hr>
 			{{/each}}
@@ -159,3 +160,5 @@
 
 </div>
 <!-- /.container -->
+
+

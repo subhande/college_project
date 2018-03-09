@@ -1,0 +1,20 @@
+
+<h1 class="">Ask A Question</h1>
+<div class="card-body">
+	<form action="/faculty/questions/ask" method="post">
+		<div class="form-group">
+			<label for="question"><b>Question</b></label>
+			<input required value="{{question}}" name="question" class="form-control" id="question" type="text" aria-describedby="question" placeholder="Enter question">
+		</div>
+		<div class="form-group">
+			<label for="desc"><b>Tags</b></label>
+			<input value="{{desc}}" name="tags" class="form-control" id="desc" type="text" aria-describedby="tags" placeholder="Enter tags">
+		</div>
+		<div class="form-group">
+			<label for="tags"><b>Description</b></label>
+			<textarea class="form-control" name="desc" rows="3" placeholder="Enter Question Description"></textarea>
+		</div>
+
+		<button class="btn btn-danger btn-block" type="submit">Ask</button>
+	</form>
+</div>

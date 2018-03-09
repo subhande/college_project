@@ -143,4 +143,21 @@ router.post('/question/:id',async (req, res) => {
 });
 
 
+router.get('/question/upvote/:qid/:aid',async (req, res) => {
+    //console.log(req.params);
+    const que = await Question.update({_id: req.params.qid,'answers._id':{$in: [req.params.aid]}},
+        {
+            $inc: {
+                'answers.$.upvotes': 1
+            }
+        }
+    );
+    //console.log(que);
+    res.redirect(`/student/questions/question/${req.params.qid}`);
+
+
+
+});
+
+
 module.exports = router;
