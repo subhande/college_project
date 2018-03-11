@@ -13,6 +13,8 @@ const methodOverride  = require('method-override');
 
 
 
+
+
 const {ObjectID} = require('mongodb');
 
 const {mongoose} = require('./db/mongoose');
@@ -34,11 +36,24 @@ app.use(express.static(path.join(__dirname, '../public')));
 const {selectRole} = require('./helpers/handlebars-helpers');
 const {formatDate} = require('./helpers/handlebars-helpers');
 const {select} = require('./helpers/handlebars-helpers');
+const {isAdmin} = require('./helpers/handlebars-helpers');
+const {isParticipant} = require('./helpers/handlebars-helpers');
+const {ifCond} = require('./helpers/handlebars-helpers');
+const {eqCheck} = require('./helpers/handlebars-helpers');
 
 app.engine('.hbs', exphbs({
     extname: '.hbs',
     defaultLayout: 'home',
-    helpers: {selectRole: selectRole, formatDate: formatDate, select:select}
+    helpers: {
+        selectRole: selectRole,
+        formatDate: formatDate,
+        select: select,
+        isParticipant: isParticipant,
+        isAdmin: isAdmin,
+        ifCond: ifCond,
+        eqCheck: eqCheck
+
+    }
 }));
 app.set('view engine', '.hbs');
 
@@ -58,6 +73,7 @@ app.use(flash());
 
 app.use(passport.initialize());
 app.use(passport.session());
+
 
  //Body Parser
 
@@ -110,6 +126,10 @@ const questionsFaculty = require('./routes/faculty/questions');
 const attendanceFaculty = require('./routes/faculty/attendance');
 const updateFaculty = require('./routes/faculty/update');
 
+const event = require('./routes/event/index');
+const admin = require('./routes/event/admin');
+const participant = require('./routes/event/participant');
+
 // Use Routes
 
 app.use('/',home);
@@ -129,6 +149,11 @@ app.use('/faculty/assignments',assignmentsFaculty);
 app.use('/faculty/questions',questionsFaculty);
 app.use('/faculty/attendance',attendanceFaculty);
 app.use('/faculty/update',updateFaculty);
+
+
+app.use('/event',event);
+app.use('/event/admin',admin);
+app.use('/event/participant',participant);
 
 
 

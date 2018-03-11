@@ -4,7 +4,7 @@ const _ = require('lodash');
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
-
+require('../../auth/auth');
 
 const {User} = require('../../models/user');
 
@@ -28,45 +28,50 @@ router.get('/login', (req,res) => {
     res.render('home/login');
 });
 
-
-passport.use(new LocalStrategy({usernameField: 'email'},async (email, password, done) => {
-
-
-
-    const user = await User.findOne({email});
-    if(!user){
-        return done(null, false, {message: 'No user found'});
-    }
-
-    bcrypt.compare(password, user.password, (err, matched) => {
-
-        if(err) return err;
-
-        if(matched) {
-            return done(null, user);
-        } else {
-            return done(null, false, {message: 'Incorrect password'});
-        }
-    });
+// router.get('/login', (req,res) => {
+//     res.redirect('/event');
+// });
 
 
-}));
-
-passport.serializeUser(function(user, done){
-    done(null, user.id);
-});
-
-passport.deserializeUser(function(id, done) {
-    User.findById(id, function(err, user) {
-        done(err, user);
-    });
-});
+// passport.use('user',new LocalStrategy({usernameField: 'email'},async (email, password, done) => {
+//
+//
+//
+//     const user = await User.findOne({email});
+//     if(!user){
+//         return done(null, false, {message: 'No user found'});
+//     }
+//
+//     bcrypt.compare(password, user.password, (err, matched) => {
+//
+//         if(err) return err;
+//
+//         if(matched) {
+//             return done(null, user);
+//         } else {
+//             return done(null, false, {message: 'Incorrect password'});
+//         }
+//     });
+//
+//
+// }));
+//
+// passport.serializeUser(function(user, done){
+//     done(null, user.id);
+// });
+//
+// passport.deserializeUser(function(id, done) {
+//     User.findById(id, function(err, user) {
+//         done(err, user);
+//     });
+// });
 
 
 router.post('/login',async (req, res, next) => {
     const user = await User.findOne({email: req.body.email});
     const redirect = user.role.isStudent ? "/student" : "/faculty";
-    passport.authenticate('local',{
+
+    passport.authenticate('user',{
         successRedirect: redirect,
         failureRedirect: '/login',
         failureFlash: true
@@ -90,6 +95,7 @@ router.get('/register', (req,res) => {
 
 
 router.post('/register', async (req, res) => {
+
     let errors = [];
 
     if(!req.body.firstName) {

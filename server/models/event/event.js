@@ -12,7 +12,7 @@ let eventSchema = new mongoose.Schema({
     date: {
         type: Date
     },
-    vanue: {
+    venue: {
         type: String,
         trim:  true,
         minlength:1,
@@ -21,10 +21,24 @@ let eventSchema = new mongoose.Schema({
         type: String,
         trim: true
     },
-    admin: {
+    admins:[{
         type: mongoose.Schema.ObjectId,
-        ref: 'Admin'
-    }
+        ref: 'EventUser'
+    }],
+    participants:[{
+        type: mongoose.Schema.ObjectId,
+        ref: 'EventUser'
+    }],
+    winners:[{
+        user: {
+            type: mongoose.Schema.ObjectId,
+            ref: 'EventUser'
+        },
+        pos: {
+            type: String
+        }
+    }]
+
 
 });
 

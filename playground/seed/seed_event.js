@@ -4,7 +4,7 @@ require('../../server/config/config');
 const {mongoose} = require('../../server/db/mongoose');
 const {ObjectID} = require('mongodb').ObjectID;
 const {Event} = require('../../server/models/event/event');
-const {Admin} = require('../../server/models/event/admin');
+const {Admin} = require('../../server/models/event/eventuser');
 const {Participant} = require('../../server/models/event/participant');
 const {EventParticipant} = require('../../server/models/event/event_participant');
 

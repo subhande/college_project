@@ -13,6 +13,8 @@ const {Assignment} = require('../server/models/assignment');
 
 
 
+
+
 // let find = async () => {
 //     try {
 //         let faculty = await Faculty.findOne({facultyID: 123456}).populate('user');

@@ -18,6 +18,7 @@ router.all('/*', userAuthenticated, (req, res, next)=>{
 
 
 router.get('/', async (req, res) => {
+    console.log(req);
     const faculty = await Faculty.findOne({user: req.user._id});
     if(!faculty) {
         res.render('faculty/update/info');
