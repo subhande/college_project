@@ -1,0 +1,46 @@
+<div class="container">
+	<div class="card">
+		<div class="card-header">
+			<h5>Event Details</h5>
+		</div>
+		<div class="card-body">
+			<table class="table table-bordered">
+				<tr><th>Name: </th><th colspan="2">{{event.name}}</th></tr>
+				<tr><th>Venue: </th><th colspan="2">{{event.venue}}</th></tr>
+				<tr><th>Start time: </th><th colspan="2">{{event.startTime}}</th></tr>
+				<tr><th>Date: </th><th colspan="2">{{formatDate event.date}}</th></tr>
+				<tr><th>Description: </th><th colspan="2">{{event.desc}}</th></tr>
+				<tr><th colspan="3" class="text-center"><h4><b>Admins</b></h4></th></tr>
+				{{#each event.admins}}
+					<tr>
+						<th>{{name}} </th>
+						<th colspan="2">
+							{{email}}<br>
+							{{contact}}<br>
+						</th>
+					</tr>
+				{{/each}}
+				<tr><th colspan="3" class="text-center"><h4><b>Participants</b></h4></th></tr>
+				{{#each event.participants}}
+					<tr>
+						<th>{{name}} </th>
+						<th colspan="2">
+							{{email}}<br>
+							{{contact}}<br>
+						</th>
+					</tr>
+				{{/each}}
+				<tr><th colspan="3" class="text-center"><h4><b>Winners</b></h4></th></tr>
+				{{#each event.winners}}
+					<tr> <th>{{pos}}</th>
+						<th>{{user.name}} </th>
+						<th>
+							{{user.email}}<br>
+							{{user.contact}}<br>
+						</th>
+					</tr>
+				{{/each}}
+			</table>
+		</div>
+	</div>
+</div>

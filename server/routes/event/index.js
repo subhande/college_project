@@ -37,7 +37,7 @@ router.get('/register', (req,res) => {
 });
 
 router.post('/register',async (req,res) => {
-    console.log(req.body);
+    //console.log(req.body);
     let errors = [];
 
     if(!req.body.name) {
@@ -116,39 +116,6 @@ router.post('/register',async (req,res) => {
     }
 });
 
-// passport.use(new LocalStrategy({usernameField: 'email'},async (email, password, done) => {
-//
-//
-//     const user = await EventUser.findOne({email});
-//
-//     if(!user){
-//         return done(null, false, {message: 'No user found'});
-//     }
-//
-//     bcrypt.compare(password, user.password, (err, matched) => {
-//
-//         if(err) return err;
-//
-//         if(matched) {
-//             return done(null, user);
-//         } else {
-//             return done(null, false, {message: 'Incorrect password'});
-//         }
-//     });
-//
-//
-// }));
-//
-// passport.serializeUser(function(user, done){
-//     done(null, user.id);
-// });
-//
-// passport.deserializeUser(function(id, done) {
-//     EventUser.findById(id, function(err, user) {
-//         done(err, user);
-//     });
-// });
-
 
 router.post('/login',async (req, res, next) => {
     try {
@@ -164,7 +131,11 @@ router.post('/login',async (req, res, next) => {
 
 
     } catch(e) {
-
+        passport.authenticate('euser',{
+            successRedirect: "/event/participant",
+            failureRedirect: '/event/login',
+            failureFlash: true
+        })(req, res, next);
     }
 
 });

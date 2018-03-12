@@ -15,6 +15,11 @@
 					{{!--<a class="nav-link" href="#">About</a>--}}
 				{{!--</li>--}}
 				{{#if role }}
+					{{#if (isAdmin role) }}
+						<li class="nav-item">
+							<a class="nav-link" href="/event/admin/create">Create New Event</a>
+						</li>
+					{{/if}}
 					<li class="nav-item">
 						<a class="nav-link" href="/event/logout">Logout</a>
 					</li>

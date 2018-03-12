@@ -7,7 +7,7 @@ let eventSchema = new mongoose.Schema({
         minlength: 1,
     },
     startTime: {
-        type: Date
+        type: String
     },
     date: {
         type: Date

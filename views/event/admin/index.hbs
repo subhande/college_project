@@ -1,0 +1,92 @@
+<div class="container">
+	<div class="card">
+		<h3 class="card-header">Welcome to Event Admin Section</h3>
+	</div>
+</div>
+<br>
+
+<div class="container">
+	<div class="card">
+		<div class="card-header"><h4>My Events</h4></div>
+		<div class="card-body">
+			<table class="table table-bordered">
+				<thead>
+				<tr>
+					<th>Name</th>
+					<th>Vanue</th>
+					<th>Start Time</th>
+					<th>Date</th>
+
+				</tr>
+				</thead>
+				<tbody>
+				{{#each events}}
+					<tr>
+						<th><a href="/event/admin/event/{{_id}}">{{name}}</a></th>
+						<th>{{venue}}</th>
+						<th>{{startTime}}</th>
+						<th>{{formatDate date}}</th>
+					</tr>
+				{{/each}}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+<br>
+<div class="container">
+	<div class="card">
+		<div class="card-header"><h4>Upcoming Events</h4></div>
+		<div class="card-body">
+			<table class="table table-bordered">
+				<thead>
+				<tr>
+					<th>Name</th>
+					<th>Vanue</th>
+					<th>Start Time</th>
+					<th>Date</th>
+				</tr>
+				</thead>
+				<tbody>
+				{{#each uevents}}
+					<tr>
+						<th><a href="/event/admin/event/{{_id}}">{{name}}</a></th>
+						<th>{{venue}}</th>
+						<th>{{startTime}}</th>
+						<th>{{formatDate date}}</th>
+					</tr>
+				{{/each}}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+<br>
+<div class="container">
+	<div class="card">
+		<div class="card-header"><h4>Previous Events</h4></div>
+		<div class="card-body">
+			<table class="table table-bordered">
+				<thead>
+				<tr>
+					<th>Name</th>
+					<th>Vanue</th>
+					<th>Start Time</th>
+					<th>Date</th>
+				</tr>
+				</thead>
+				<tbody>
+				{{#each pevents}}
+					<tr>
+						<th><a href="/event/admin/event/{{_id}}">{{name}}</a></th>
+						<th>{{venue}}</th>
+						<th>{{startTime}}</th>
+						<th>{{formatDate date}}</th>
+					</tr>
+				{{/each}}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+
