@@ -1,13 +1,16 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-	<div class="container">
-		<a class="navbar-brand" href="#"><h1>GITA</h1></a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<div class="collapse navbar-collapse" id="navbarResponsive">
-			<ul class="navbar-nav ml-auto">
+ <header id="header" class="headers">
+    <div class="container">
+
+      <div id="logo" class="pull-left">
+        <a href="/"><img src="/img/logo.png" alt="" title="" /></a>
+        <!-- Uncomment below if you prefer to use a text logo -->
+        <!--<h1><a href="#hero">Regna</a></h1>-->
+      </div>
+
+      <nav id="nav-menu-container">
+			 <ul class="nav-menu">
 				<li class="nav-item active">
-					<a class="nav-link" href="/">Home
+					<a  href="/">Home
 						<span class="sr-only">(current)</span>
 					</a>
 				</li>
@@ -17,24 +20,24 @@
 				{{#if role }}
 					{{#if (isAdmin role) }}
 						<li class="nav-item">
-							<a class="nav-link" href="/event/admin/create">Create New Event</a>
+							<a href="/event/admin/create">Create New Event</a>
 						</li>
 					{{/if}}
 					<li class="nav-item">
-						<a class="nav-link" href="/event/logout">Logout</a>
+						<a  href="/event/logout">Logout</a>
 					</li>
 				{{else}}
 					<li class="nav-item">
-						<a class="nav-link" href="/event/login">Login</a>
+						<a  href="/event/login">Login</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="/event/register">Register</a>
+						<a  href="/event/register">Register</a>
 					</li>
 				{{/if}}
 				{{!--<li class="nav-item">--}}
 					{{!--<a class="nav-link" href="#">Contact</a>--}}
 				{{!--</li>--}}
 			</ul>
-		</div>
-	</div>
-</nav>
+         </nav>
+		 </div>
+  </header>

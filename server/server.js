@@ -10,6 +10,7 @@ const session  = require('express-session');
 const flash  = require('connect-flash');
 const passport  = require('passport');
 const methodOverride  = require('method-override');
+const helmet  = require('helmet');
 
 
 
@@ -84,6 +85,10 @@ app.use(bodyParser.json());
 // Method Override
 
 app.use(methodOverride('_method'));
+
+//Helmet
+
+app.use(helmet());
 
 
 // Local Variables using Middleware

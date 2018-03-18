@@ -99,5 +99,33 @@ router.post('/info', async (req, res) => {
 
 });
 
+router.get('/change',async (req, res) => {
+
+    //To DO: Render a change password page
+
+    //res.render('faculty/update/index');
+});
+
+router.get('/change',async (req, res) => {
+
+    //To DO: change password
+
+    //res.render('faculty/update/index');
+
+    let user = await User.findOne({_id: req.user.id});
+
+    if(req.body.password === req.body.confirmPassword) {
+        user.password = req.body.password;
+        await user.save();
+
+    }
+
+
+
+
+
+});
+
+
 
 module.exports = router;

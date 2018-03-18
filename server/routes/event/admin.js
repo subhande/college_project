@@ -63,6 +63,7 @@ router.post('/create',async (req,res) => {
 });
 
 router.get('/event/:id',async (req,res) => {
+    console.log(req.user);
     const event = await Event.findOne({_id:req.params.id})
         .populate({
             path: 'admins',

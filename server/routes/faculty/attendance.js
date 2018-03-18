@@ -28,7 +28,7 @@ router.get('/', async (req, res) => {
 });
 
 router.post('/', async (req, res) => {
-    console.log(req.body);
+    //console.log(req.body);
     const subject = await Subject.findOne({_id: req.body.subject})
         .populate({
             path: 'students',
@@ -49,8 +49,8 @@ router.post('/', async (req, res) => {
 
 
 router.post('/update',async (req, res) => {
-    console.log(req.body);
-    console.log(req.body.students.length);
+    //console.log(req.body);
+    //console.log(req.body.students.length);
 
     const attendance = new Attendence({
         subject: req.body.id,
@@ -94,7 +94,7 @@ router.post('/show',async (req, res) => {
     new Promise((resolve, reject) => {
         subject.students.forEach(async (student) => {
             Attendence.count({subject: req.body.subject}).then((total) => {
-                Attendence.count({students: {$in: [student]}}).then((attendance) => {
+                Attendence.count({subject: req.body.subject, students: {$in: [student]}}).then((attendance) => {
                     Student.findOne({_id: student}).populate({path:'user',model:'User'}).then((tstudent) => {
                         let data = {
                             name: tstudent.user.firstName +' '+ tstudent.user.lastName,
@@ -104,7 +104,7 @@ router.post('/show',async (req, res) => {
 
                         details.push(data);
 
-                        //console.log(data);
+                        console.log(data);
                         resolve(details);
                     });
                 });

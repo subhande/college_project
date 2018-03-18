@@ -25,15 +25,49 @@ router.all('/*', (req, res, next) => {
 
 
 router.get('/', (req,res) => {
-    res.render('event/index');
+    //console.log(req.user);
+    if(req.isAuthenticated()){
+        if(req.user.role.hasOwnProperty('isStudent')){
+            const redirect = req.user.role.isStudent ? "/student" : "/faculty";
+            res.redirect(redirect);
+        } else {
+            const redirect = (req.user.role === 'admin') ? "/event/admin" : "/event/participant";
+            res.redirect(redirect);
+        }
+    } else {
+        res.render('event/index');
+    }
+
 });
 
 router.get('/login', (req,res) => {
-    res.render('event/login');
+    if(req.isAuthenticated()){
+        if(req.user.role.hasOwnProperty('isStudent')){
+            const redirect = req.user.role.isStudent ? "/student" : "/faculty";
+            res.redirect(redirect);
+        } else {
+            const redirect = (req.user.role === 'admin') ? "/event/admin" : "/event/participant";
+            res.redirect(redirect);
+        }
+    } else {
+        res.render('event/login');
+    }
+
 });
 
 router.get('/register', (req,res) => {
-    res.render('event/register');
+    if(req.isAuthenticated()){
+        if(req.user.role.hasOwnProperty('isStudent')){
+            const redirect = req.user.role.isStudent ? "/student" : "/faculty";
+            res.redirect(redirect);
+        } else {
+            const redirect = (req.user.role === 'admin') ? "/event/admin" : "/event/participant";
+            res.redirect(redirect);
+        }
+    } else {
+        res.render('event/register');
+    }
+
 });
 
 router.post('/register',async (req,res) => {

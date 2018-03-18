@@ -7,6 +7,8 @@
   "development":{
     "PORT": 3000,
     "MONGODB_URI": "mongodb://localhost:27017/Gita",
-    "JWT_SECRET": "hbcb78687bjkbjkbjabacoNZiHSDBVSSVDXDFZDFZDSd"
+    "JWT_SECRET": "hbcb78687bjkbjkbjabacoNZiHSDBVSSVDXDFZDFZDSd",
+    "SENDGRID_API_KEY": "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"
+
   }
 }

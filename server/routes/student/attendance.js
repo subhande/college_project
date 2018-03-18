@@ -19,7 +19,12 @@ router.all('/*', userAuthenticated, (req, res, next)=>{
 
 
 router.get('/',async (req, res) => {
-    const student = await Student.findOne({user: req.user._id}).populate({path:'user',model: 'User'});
+    const student = await Student.findOne({user: req.user._id})
+        .populate({
+            path:'user',
+            model: 'User',
+            select: ['firstName','lastName']
+        });
     let subjects = await Subject.find({ students: {$in: [student._id]}})
         .populate({
             path: 'faculty',
