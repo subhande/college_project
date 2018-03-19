@@ -1,0 +1,23 @@
+<div class="container">
+	<div class="card mx-auto mt-5">
+		<div class="card-header">New Notice</div>
+		<div class="card-body">
+			<form action="/faculty/notice" method="post">
+
+				<div class="form-group">
+					<label for="title">Notice Title</label>
+					<input  name="title" class="form-control" id="title" type="text" aria-describedby="title" placeholder="Notice Title">
+				</div>
+
+				<div class="form-group">
+					<label for="body">Notice Body</label>
+					<textarea name="body" class="form-control" id="body" rows="4" cols="50"></textarea>
+				</div>
+
+				<button class="btn btn-primary btn-block" type="submit">Update</button>
+
+			</form>
+
+		</div>
+	</div>
+</div>

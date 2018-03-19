@@ -1,0 +1,35 @@
+<div class="container">
+	<table class="table table-bordered">
+		<thead>
+			<tr>
+				<th>
+					Notice Title
+				</th>
+				<th>
+					Posted By
+				</th>
+				<th>
+					Date
+				</th>
+				<th>
+					Action
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+		{{#each notices}}
+			<tr>
+				<th>{{title}}</th>
+
+				<th>{{author.firstName}} {{author.lastName}}</th>
+				<th>{{createdAt}}</th>
+				<th>
+					<form action="/faculty/notice/remove/{{_id}}" method="get">
+						<button class="btn btn-danger" type="submit">Remove</button>
+					</form>
+				</th>
+			</tr>
+		{{/each}}
+		</tbody>
+	</table>
+</div>

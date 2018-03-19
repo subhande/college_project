@@ -130,6 +130,7 @@ const assignmentsFaculty = require('./routes/faculty/assignments');
 const questionsFaculty = require('./routes/faculty/questions');
 const attendanceFaculty = require('./routes/faculty/attendance');
 const updateFaculty = require('./routes/faculty/update');
+const noticeFaculty = require('./routes/faculty/notice');
 
 const event = require('./routes/event/index');
 const admin = require('./routes/event/admin');
@@ -154,6 +155,7 @@ app.use('/faculty/assignments',assignmentsFaculty);
 app.use('/faculty/questions',questionsFaculty);
 app.use('/faculty/attendance',attendanceFaculty);
 app.use('/faculty/update',updateFaculty);
+app.use('/faculty/notice',noticeFaculty);
 
 
 app.use('/event',event);

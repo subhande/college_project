@@ -11,6 +11,7 @@ const LocalStrategy = require('passport-local').Strategy;
 require('../../auth/auth');
 
 const {User} = require('../../models/user');
+const {Notice} = require('../../models/notice');
 
 
 router.all('/*', (req, res, next) => {
@@ -46,11 +47,15 @@ router.get('/commingsoon', (req,res) => {
 router.get('/error', (req,res) => {
     res.render('home/error');
 });
-router.get('/notice', (req,res) => {
-    res.render('home/notice');
+router.get('/notice',async (req,res) => {
+    let notices = await Notice.find({}).sort('-createdAt');
+    res.render('home/notice', {
+        notices: notices
+    });
 });
-router.get('/notice/:id', (req,res) => {
-    res.render('home/noticeview');
+router.get('/notice/:id',async (req,res) => {
+    let notice = await Notice.findOne({_id: req.params.id});
+    res.render('home/noticeview',{notice});
 });
 
 

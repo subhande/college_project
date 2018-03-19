@@ -1,18 +1,16 @@
 {{>home/nav2}}
-<div id=coming class="container"><h3>notice</h3>
-    
-       
-            <div class="card">
-             <div class="card-header">
-             <a href="/notice/vhjghjghkghk"> 
-             <div class="row">
-             <div class="col-9">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
-              <div class="col-3">date </div>
-              </div>
-              </a></div> 
-            </div>
-       
-        
-    
+<div id=coming class="container"><h3>Notice Board</h3>
+	{{#each notices}}
+		<div class="card">
+			<div class="card-header">
+				<a href="/notice/{{_id}}">
+					<div class="row">
+						<div class="col-9">{{title}}</div>
+						<div class="col-3">{{formatDate createdAt}}</div>
+					</div>
+				</a>
+			</div>
+		</div>
+	{{/each}}
 </div>
 {{>home/footer2}}

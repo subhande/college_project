@@ -3,17 +3,18 @@
 
  
 <div class="container">
-   <h1 id="coming"> 
-    <div class="row">
-        <div class="col-10">Title</div><div class="col-2"><h3>date</h3></div>
-           </div>
-           </h1>
-    
-            <div class="card">
-             <div class="card-header"> 
-             Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
-            </div>
-            
-           
+	<div id="coming">
+		<div class="row">
+			<div class="col-10">{{notice.title}}</div>
+			<div class="col-2">
+				<h3>{{formatDate createdAt}}</h3>
+			</div>
+		</div>
+	</div>
+	<div class="card">
+		<div class="card-header">{{notice.body}}</div>
+	</div>
 </div>
+
+
 {{>home/footer2}}

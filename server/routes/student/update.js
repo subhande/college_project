@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const {userAuthenticated}  = require('../../helpers/authentication');
+const bcrypt = require('bcryptjs');
 
 const {User} = require('../../models/user');
 const {Student} = require('../../models/student');
@@ -101,27 +102,31 @@ router.post('/info', async (req, res) => {
 
 router.get('/change',async (req, res) => {
 
-    //To DO: Render a change password page
-
-    //res.render('faculty/update/index');
+    res.render('student/update/changepassword');
 });
 
-router.get('/change',async (req, res) => {
+router.post('/change',async (req, res) => {
 
-    //To DO: change password
+    bcrypt.compare(req.body.opass, req.user.password, async (err, matched) => {
 
-    //res.render('faculty/update/index');
+        if(err) return err;
 
-    let user = await User.findOne({_id: req.user.id});
-
-    if(req.body.password === req.body.confirmPassword) {
-        user.password = req.body.password;
-        await user.save();
-
-    }
-
-
-
+        if(matched) {
+            if(req.body.npass === req.body.cnpass){
+                let user = await User.findOne({_id: req.user.id});
+                user.password = req.body.npass;
+                await user.save();
+                req.flash('success_message', 'Password Changed Successfully');
+                res.redirect('/student');
+            } else {
+                req.flash('error_message', 'Password didn\'t match');
+                res.redirect('/student/update/change');
+            }
+        } else {
+            req.flash('error_message', 'Incorrect Old Password');
+            res.redirect('/student/update/change');
+        }
+    });
 
 
 });
