@@ -10,9 +10,24 @@ Header
 <!--   sign in___________________-->
 
 
-{{>home/form-msgs}}
+{{!--{{>home/form-msgs}}--}}
+<br>
+<br>
+<br>
+<br>
+<div class="container">
+	{{#if errors}}
+
+		{{#each errors}}
+
+			<div class="alert alert-danger">{{message}}</div>
+
+		{{/each}}
 
 
+	{{/if}}
+	{{> home/form-msgs}}
+</div>
 <div class="container" id="signup">
 	<div class="row">
 		<div class="col-md-6 col-md-offset-3" id="sign">
@@ -50,6 +65,7 @@ Header
 	</div>
 </div>
 
+{{>home/footer2}}
 <!--	</div>-->
 
 <script>

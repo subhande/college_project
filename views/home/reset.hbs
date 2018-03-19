@@ -9,6 +9,23 @@ Header
 <!--   sign in___________________-->
 
 {{!--{{>home/form-msgs}}--}}
+<br>
+<br>
+<br>
+<br>
+<div class="container">
+	{{#if errors}}
+
+		{{#each errors}}
+
+			<div class="alert alert-danger">{{message}}</div>
+
+		{{/each}}
+
+
+	{{/if}}
+	{{> home/form-msgs}}
+</div>
 
 <div class="container" id="signup">
 	<div class="row">
@@ -51,7 +68,7 @@ Header
 </div>
 
 <!--	</div>-->
-
+{{>home/footer2}}
 <script>
 
 	function student() {

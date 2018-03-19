@@ -41,8 +41,8 @@ router.get('/', (req,res) => {
 
 
 
-router.get('/commingsoon', (req,res) => {
-    res.render('home/conmingsoon');
+router.get('/comingsoon', (req,res) => {
+    res.render('home/comingsoon');
 });
 router.get('/error', (req,res) => {
     res.render('home/error');
@@ -76,14 +76,23 @@ router.get('/login', (req,res) => {
 });
 
 router.post('/login',async (req, res, next) => {
-    const user = await User.findOne({email: req.body.email});
-    const redirect = user.role.isStudent ? "/student" : "/faculty";
+    try{
+        const user = await User.findOne({email: req.body.email});
+        const redirect = user.role.isStudent ? "/student" : "/faculty";
 
-    passport.authenticate('user',{
-        successRedirect: redirect,
-        failureRedirect: '/login',
-        failureFlash: true
-    })(req, res, next);
+        passport.authenticate('user',{
+            successRedirect: redirect,
+            failureRedirect: '/login',
+            failureFlash: true
+        })(req, res, next);
+    } catch(e) {
+        passport.authenticate('user',{
+            successRedirect: '/error',
+            failureRedirect: '/login',
+            failureFlash: true
+        })(req, res, next);
+    }
+
 
 });
 

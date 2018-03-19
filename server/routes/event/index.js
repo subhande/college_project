@@ -41,6 +41,7 @@ router.get('/', (req,res) => {
 });
 
 router.get('/login', (req,res) => {
+
     if(req.isAuthenticated()){
         if(req.user.role.hasOwnProperty('isStudent')){
             const redirect = req.user.role.isStudent ? "/student" : "/faculty";
@@ -155,6 +156,7 @@ router.post('/login',async (req, res, next) => {
     try {
         const user = await EventUser.findOne({email: req.body.email});
 
+
         const redirect = (user.role === 'admin') ? "/event/admin" : "/event/participant";
 
         passport.authenticate('euser',{
@@ -166,7 +168,7 @@ router.post('/login',async (req, res, next) => {
 
     } catch(e) {
         passport.authenticate('euser',{
-            successRedirect: "/event/participant",
+            successRedirect: "/error",
             failureRedirect: '/event/login',
             failureFlash: true
         })(req, res, next);

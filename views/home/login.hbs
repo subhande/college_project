@@ -6,7 +6,26 @@
   <!--==========================
   {{>home/nav2}}
 <!--   sign in___________________-->
-  
+
+  <div class="container">
+	  <div class="container">
+		  <br>
+		  <br>
+		  <br>
+		  <br>
+		  {{#if errors}}
+
+			  {{#each errors}}
+
+				  <div class="alert alert-danger">{{message}}</div>
+
+			  {{/each}}
+
+
+		  {{/if}}
+		  {{> home/form-msgs}}
+	  </div>
+  </div>
   
   
 <div class="container" id="signup">
