@@ -1,5 +1,18 @@
 <div>
 
-
+	<div id=coming class="container"><h3>Upcoming Events</h3>
+		{{#each events}}
+			<div class="card">
+				<div class="card-header">
+					{{!--<a href="/notice/{{_id}}">--}}
+						<div class="row">
+							<div class="col-9">{{name}}</div>
+							<div class="col-3">{{formatDate date}}</div>
+						</div>
+					{{!--</a>--}}
+				</div>
+			</div>
+		{{/each}}
+	</div>
 
 </div>

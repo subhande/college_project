@@ -24,7 +24,7 @@ router.all('/*', (req, res, next) => {
 
 
 
-router.get('/', (req,res) => {
+router.get('/',async (req,res) => {
     //console.log(req.user);
     if(req.isAuthenticated()){
         if(req.user.role.hasOwnProperty('isStudent')){
@@ -35,7 +35,9 @@ router.get('/', (req,res) => {
             res.redirect(redirect);
         }
     } else {
-        res.render('event/index');
+        const date = new Date();
+        const events = await Event.find({date: {$gt: date}});
+        res.render('event/index',{events});
     }
 
 });
