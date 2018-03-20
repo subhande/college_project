@@ -1,4 +1,5 @@
 require('./config/config');
+require('./config/sendgridapi');
 
 const express = require('express');
 const app = express();

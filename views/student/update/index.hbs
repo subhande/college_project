@@ -33,13 +33,13 @@
 		</div>
 		<div class="form-group">
 			<label for="course">Course Name</label>
-			<select class="form-control" name="course" id="course">
+			<select onload="selectCourse(this)" onclick="selectCourse(this)" class="form-control" name="course" id="course">
 				<option {{select courseName 'B.Tech'}} value="B.Tech">B.Tech</option>
 				<option {{select courseName 'MCA'}} value="MCA">MCA</option>
 				<option {{select courseName 'MBA'}} value="MBA">MBA</option>
 			</select>
 		</div>
-		<div class="form-group">
+		<div id="dbranch" class="form-group">
 			<label for="branch">Branch</label>
 			<select class="form-control" name="branch" id="branch">
 				<option {{select branch 'Civil'}} value="Civil">Civil</option>
@@ -51,7 +51,7 @@
 			</select>
 
 		</div>
-		<div class="form-group">
+		<div id="dsem" class="form-group">
 			<label for="sem">Semester</label>
 			<select class="form-control" name="sem" id="sem">
 				<option {{select semester '1st'}} value="1st">1st</option>
@@ -65,6 +65,58 @@
 			</select>
 		</div>
 
+		<div id="dmsem" class="form-group">
+			<label for="msem">Semester</label>
+			<select class="form-control" name="msem" id="msem">
+				<option {{select semester '1st'}} value="1st">1st</option>
+				<option {{select semester '2nd'}} value="2nd">2nd</option>
+				<option {{select semester '3rd'}} value="3rd">3rd</option>
+				<option {{select semester '4th'}} value="4th">4th</option>
+				<option {{select semester '5th'}} value="5th">5th</option>
+				<option {{select semester '6th'}} value="6th">6th</option>
+			</select>
+		</div>
+
 		<button class="btn btn-danger btn-block" type="submit">Update</button>
 	</form>
 </div>
+
+<script>
+	function selectCourse(fn){
+
+	    if(fn.value === "MBA" || fn.value === "MCA") {
+			let dbranch = document.getElementById('dbranch');
+			dbranch.style.display = 'none';
+			let dsem = document.getElementById('dsem');
+			dsem.style.display = 'none';
+			let dmsem = document.getElementById('dmsem');
+			dmsem.style.display = 'block';
+		} else {
+			let dbranch = document.getElementById('dbranch');
+			dbranch.style.display = 'block';
+			let dsem = document.getElementById('dsem');
+			dsem.style.display = 'block';
+			let dmsem = document.getElementById('dmsem');
+			dmsem.style.display = 'none';
+		}
+	}
+
+
+	let fn = document.getElementById('course');
+	if(fn.value === "MBA" || fn.value === "MCA") {
+		let dbranch = document.getElementById('dbranch');
+		dbranch.style.display = 'none';
+		let dsem = document.getElementById('dsem');
+		dsem.style.display = 'none';
+		let dmsem = document.getElementById('dmsem');
+		dmsem.style.display = 'block';
+	} else {
+		let dbranch = document.getElementById('dbranch');
+		dbranch.style.display = 'block';
+		let dsem = document.getElementById('dsem');
+		dsem.style.display = 'block';
+		let dmsem = document.getElementById('dmsem');
+		dmsem.style.display = 'none';
+	}
+
+</script>

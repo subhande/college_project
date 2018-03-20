@@ -37,6 +37,14 @@ router.get('/', async (req, res) => {
 
 
 router.post('/', async (req, res) => {
+    let branch,sem;
+    if(req.body.course === 'MCA' || req.body.course === 'MBA') {
+        sem = req.body.msem;
+        branch = null;
+    } else {
+        sem = req.body.sem;
+        branch = req.body.branch;
+    }
     //console.log(req.body);
     let updateUser = {
         $set: {
@@ -52,8 +60,8 @@ router.post('/', async (req, res) => {
             regID: req.body.regID,
             rollNo: req.body.rollNo,
             courseName: req.body.course,
-            branch: req.body.branch,
-            semester: req.body.sem,
+            branch: branch,
+            semester: sem,
         }
     };
 
@@ -77,7 +85,14 @@ router.get('/info', (req, res) => {
 
 
 router.post('/info', async (req, res) => {
-
+    let branch,sem;
+    if(req.body.course === 'MCA' || req.body.course === 'MBA') {
+        sem = req.body.msem;
+        branch = null;
+    } else {
+        sem = req.body.sem;
+        branch = req.body.branch;
+    }
     try{
 
         const student = new Student({
@@ -85,8 +100,8 @@ router.post('/info', async (req, res) => {
             regID: req.body.regID,
             rollNo: req.body.rollNo,
             courseName: req.body.course,
-            branch: req.body.branch,
-            semester: req.body.sem
+            branch: branch,
+            semester: sem
         });
 
         await student.save();
